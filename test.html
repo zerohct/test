@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hệ thống Quản lý Sự kiện Khoa | Đại học XYZ</title>
+    <meta
+      name="description"
+      content="Hệ thống quản lý sự kiện khoa học tiên tiến cho Đại học XYZ. Đăng ký, tổ chức và quản lý sự kiện học thuật hiệu quả."
+    />
+    <meta
+      name="keywords"
+      content="quản lý sự kiện, giáo dục đại học, sự kiện học thuật, đăng ký hội thảo"
+    />
+    <meta name="author" content="Đại học XYZ" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+      body {
+        font-family: "Roboto", sans-serif;
+      }
+      .darkmode {
+        @apply bg-gray-900 text-white;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <div class="flex">
+      <!-- Sidebar -->
+      <nav class="bg-blue-600 text-white w-64 min-h-screen p-4">
+        <div class="mb-8">
+          <img
+            src="/api/placeholder/64/64"
+            alt="User"
+            class="w-16 h-16 rounded-full mx-auto mb-2"
+          />
+          <p class="text-center font-bold">Mia Taylor</p>
+        </div>
+        <ul>
+          <li class="mb-4">
+            <a href="#" class="flex items-center hover:bg-blue-700 p-2 rounded">
+              <i class="fas fa-user mr-2"></i>
+              <span>Hồ sơ</span>
+            </a>
+          </li>
+          <li class="mb-4">
+            <a href="#" class="flex items-center hover:bg-blue-700 p-2 rounded">
+              <i class="fas fa-calendar-alt mr-2"></i>
+              <span>Sự kiện</span>
+            </a>
+          </li>
+          <li class="mb-4">
+            <a href="#" class="flex items-center hover:bg-blue-700 p-2 rounded">
+              <i class="fas fa-chart-line mr-2"></i>
+              <span>Thống kê</span>
+            </a>
+          </li>
+          <li class="mb-4">
+            <a href="#" class="flex items-center hover:bg-blue-700 p-2 rounded">
+              <i class="fas fa-cog mr-2"></i>
+              <span>Cài đặt</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main content -->
+      <div class="flex-1 p-8">
+        <header class="flex justify-between items-center mb-8">
+          <h1 class="text-3xl font-bold">Hệ thống Quản lý Sự kiện Khoa</h1>
+          <div class="flex items-center space-x-4">
+            <button
+              class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+              <i class="fas fa-plus mr-2"></i>Tạo sự kiện
+            </button>
+            <button
+              id="darkModeToggle"
+              class="text-gray-600 hover:text-gray-800"
+            >
+              <i class="fas fa-moon"></i>
+            </button>
+          </div>
+        </header>
+
+        <!-- Event list -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          id="eventList"
+        >
+          <!-- Event cards will be dynamically added here -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Sample event data
+      const events = [
+        {
+          id: 1,
+          title: "Hội thảo Khoa học Công nghệ",
+          date: "2024-10-15",
+          description:
+            "Khám phá những tiến bộ mới nhất trong lĩnh vực công nghệ thông tin và ứng dụng.",
+          image: "/api/placeholder/300/200",
+          category: "Hội thảo",
+        },
+        {
+          id: 2,
+          title: "Cuộc thi Lập trình Sáng tạo",
+          date: "2024-11-20",
+          description:
+            "Thử thách kỹ năng lập trình của bạn và giành giải thưởng hấp dẫn!",
+          image: "/api/placeholder/300/200",
+          category: "Cuộc thi",
+        },
+        {
+          id: 3,
+          title: "Seminar về Trí tuệ Nhân tạo",
+          date: "2024-12-05",
+          description:
+            "Tìm hiểu về AI và các ứng dụng của nó trong cuộc sống hàng ngày.",
+          image: "/api/placeholder/300/200",
+          category: "Seminar",
+        },
+      ];
+
+      // Function to create event cards
+      function createEventCard(event) {
+        return `
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="${event.image}" alt="${
+          event.title
+        }" class="w-full h-48 object-cover" />
+                    <div class="p-4">
+                        <h2 class="text-xl font-semibold mb-2">${
+                          event.title
+                        }</h2>
+                        <p class="text-gray-600 mb-2">${new Date(
+                          event.date
+                        ).toLocaleDateString("vi-VN")}</p>
+                        <p class="text-gray-700 mb-4">${event.description}</p>
+                        <div class="flex justify-between items-center">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">${
+                              event.category
+                            }</span>
+                            <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Đăng ký</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+      }
+
+      // Populate event list
+      const eventList = document.getElementById("eventList");
+      events.forEach((event) => {
+        eventList.innerHTML += createEventCard(event);
+      });
+
+      // Dark mode toggle
+      const darkModeToggle = document.getElementById("darkModeToggle");
+      const body = document.body;
+
+      darkModeToggle.addEventListener("click", () => {
+        body.classList.toggle("darkmode");
+        if (body.classList.contains("darkmode")) {
+          darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+          darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+      });
+    </script>
+  </body>
+</html>

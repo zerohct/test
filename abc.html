@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hệ thống Quản lý Sự kiện Khoa | Đại học XYZ</title>
+    <meta
+      name="description"
+      content="Hệ thống quản lý sự kiện khoa học tiên tiến cho Đại học XYZ. Đăng ký, tổ chức và quản lý sự kiện học thuật hiệu quả."
+    />
+    <meta
+      name="keywords"
+      content="quản lý sự kiện, giáo dục đại học, sự kiện học thuật, đăng ký hội thảo"
+    />
+    <meta name="author" content="Đại học XYZ" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <aside class="sidebar">
+        <div class="user-profile">
+          <img
+            src="/api/placeholder/160/160"
+            alt="User Avatar"
+            class="user-avatar"
+          />
+          <p class="user-name">Mia Taylor</p>
+        </div>
+        <nav class="main-nav">
+          <ul>
+            <li>
+              <a href="#profile"
+                ><i class="fas fa-user"></i><span>Hồ sơ</span></a
+              >
+            </li>
+            <li class="active">
+              <a href="#events"
+                ><i class="fas fa-calendar-alt"></i><span>Sự kiện</span></a
+              >
+            </li>
+            <li>
+              <a href="#stats"
+                ><i class="fas fa-chart-line"></i><span>Thống kê</span></a
+              >
+            </li>
+            <li>
+              <a href="#settings"
+                ><i class="fas fa-cog"></i><span>Cài đặt</span></a
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="app-header">
+          <h1>Hệ thống Quản lý Sự kiện Khoa</h1>
+          <div class="header-actions">
+            <button class="btn btn-primary" id="createEventBtn">
+              <i class="fas fa-plus"></i>Tạo sự kiện
+            </button>
+            <button class="btn btn-icon" id="darkModeToggle">
+              <i class="fas fa-moon"></i>
+            </button>
+          </div>
+        </header>
+
+        <div class="search-container">
+          <input
+            type="text"
+            placeholder="Tìm kiếm sự kiện..."
+            class="search-input"
+          />
+          <i class="fas fa-search search-icon"></i>
+        </div>
+
+        <section class="analytics">
+          <h2>Thống kê sự kiện</h2>
+          <div class="stat-cards">
+            <div class="stat-card">
+              <p class="stat-value">150</p>
+              <p class="stat-label">Tổng số sự kiện</p>
+              <i class="fas fa-calendar-alt stat-icon"></i>
+            </div>
+            <div class="stat-card">
+              <p class="stat-value">75</p>
+              <p class="stat-label">Sự kiện đang diễn ra</p>
+              <i class="fas fa-clock stat-icon"></i>
+            </div>
+            <div class="stat-card">
+              <p class="stat-value">25</p>
+              <p class="stat-label">Sự kiện sắp tới</p>
+              <i class="fas fa-hourglass-start stat-icon"></i>
+            </div>
+          </div>
+        </section>
+
+        <section class="chart-section">
+          <h2>Phân bố sự kiện theo loại</h2>
+          <div class="chart" id="eventTypeChart"></div>
+        </section>
+
+        <section class="events">
+          <h2>Danh sách sự kiện</h2>
+          <div class="event-grid" id="eventList"></div>
+        </section>
+
+        <section class="recent-activity">
+          <h2>Hoạt động gần đây</h2>
+          <div class="activity-list">
+            <div class="activity-item">
+              <img
+                src="/api/placeholder/45/45"
+                alt="User Avatar"
+                class="activity-avatar"
+              />
+              <div class="activity-content">
+                <p>
+                  Nguyễn Văn A đã đăng ký tham gia
+                  <span class="highlight">Hội thảo Khoa học Công nghệ</span>
+                </p>
+                <small class="activity-time">2 giờ trước</small>
+              </div>
+            </div>
+            <div class="activity-item">
+              <img
+                src="/api/placeholder/45/45"
+                alt="User Avatar"
+                class="activity-avatar"
+              />
+              <div class="activity-content">
+                <p>
+                  Trần Thị B đã tạo sự kiện mới:
+                  <span class="highlight">Workshop Lập trình Web</span>
+                </p>
+                <small class="activity-time">1 ngày trước</small>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
